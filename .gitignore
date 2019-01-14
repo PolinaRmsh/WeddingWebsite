@@ -1,2 +1,10 @@
 archive
 node_modules
+package-lock.json
+dist/
+weddingservice/target/
+.idea/
+*.iml
+weddingservice/dependency-reduced-pom.xml
+ansible/roles/
+*.retry

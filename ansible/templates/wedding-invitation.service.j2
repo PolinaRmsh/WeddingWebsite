@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+[Unit]
+Description=Run wedding invitation service
+After=network.target
+
+[Service]
+Restart=always
+Type=simple
+
+ExecStart=/usr/bin/wedding
+
+[Install]
+WantedBy=multi-user.target

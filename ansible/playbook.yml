@@ -1,0 +1,105 @@
+- hosts: wedding
+  remote_user: bart
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars:
+    wedding_install_path: /opt/wedding
+    wedding_docs_path: /var/www/xyz.monhemius.wedding
+    wedding_service_name: wedding-invitation
+    wedding_service_version: 1.0
+  vars_files:
+
+  tasks:
+    - name: Configure sshd
+      include_role:
+        name: dev-sec.ssh-hardening
+
+    - name: Install Java
+      apt:
+        name: openjdk-8-jre-headless
+        state: latest
+
+    - name: Configure automatic updates
+      include_role:
+        name: jnv.unattended-upgrades
+
+    - name: Install NGINX
+      include_role:
+        name: nginxinc.nginx
+
+    - name: Deny everything and enable UFW
+      ufw:
+        state: enabled
+        policy: deny
+
+    - name:
+      ufw:
+        rule: allow
+        name: OpenSSH
+
+    - name: Allow all access to tcp port 80
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp
+
+    - name: Allow all access to tcp port 80
+      ufw:
+        rule: allow
+        port: 443
+        proto: tcp
+
+    - name: Create docs folder
+      file:
+        path: "{{ wedding_docs_path }}"
+        state: directory
+
+    - name: Deploy Website
+      copy:
+        src: "./../dist/"
+        dest: "{{ wedding_docs_path }}"
+
+    - name: Create folder
+      file:
+        path: "{{ wedding_install_path }}/bin"
+        state: directory
+
+    - name: Deploy Web service
+      copy:
+        src: "./../weddingservice/target/wedding-service-{{ wedding_service_version }}.jar"
+        dest: "{{ wedding_install_path }}/bin"
+
+
+    - name: Install web service bash wrapper
+      template:
+        src: wedding.sh.j2
+        dest: /usr/bin/wedding
+        mode: 0755
+
+    - name: Install SystemD service
+      template:
+        src: wedding-invitation.service.j2
+        dest: "/lib/systemd/system/{{ wedding_service_name }}.service"
+        mode: 0644
+
+    - name: Restart Web service
+      systemd:
+        name: "{{ wedding_service_name }}"
+        daemon_reload: yes
+        state: restarted
+        enabled: yes
+
+    - name: Copy NGINX configuration
+      copy:
+        src: ./files/nginx/
+        dest: /etc/nginx
+        owner: root
+        group: root
+        mode: 0644
+        force: yes
+
+    - name: Restart NGINX with new configuration
+      systemd:
+        name: nginx
+        state: restarted

@@ -1,0 +1,31 @@
+- hosts: wedding
+  remote_user: root
+  gather_facts: no
+  vars:
+    user_pass: $6$5Wimd6hdRHYVNLDi$em7/lRmGrVoCq1K8wPT4er81duJ31WJphGAHxmGnT89vuWss4hNjbfv85MGfmRUkyCNVPrPiH9tJUr6537YWI.
+  tasks:
+  - name: Bootstrap a host without python2 installed
+    raw: apt-get install -y python
+
+  - name: Create user
+    user:
+      name: bart
+      password: "{{ user_pass }}"
+      groups: sudo
+      append: yes
+      shell: /bin/bash
+      state: present
+
+  - name: Create .ssh folder
+    file:
+      path: /home/bart/.ssh
+      state: directory
+
+  - name: Copy root's autorized_keys
+    copy:
+      remote_src: yes
+      src: /root/.ssh/authorized_keys
+      dest: /home/bart/.ssh/authorized_keys
+      owner: mentech
+      group: mentech
+      mode: 0600

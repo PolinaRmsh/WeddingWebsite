@@ -1,0 +1,4 @@
+# Install a role from the Ansible Galaxy
+- src: dev-sec.ssh-hardening
+- src: jnv.unattended-upgrades
+- src: nginxinc.nginx

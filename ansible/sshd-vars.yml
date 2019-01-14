@@ -1,0 +1,15 @@
+vars:
+  # Enable only server
+  ssh_server_enabled: true
+  ssh_server_hardening: true
+  ssh_client_hardening: false
+
+  # Disable password login and only allow mentech user
+  ssh_server_password_login: false
+  ssh_allow_users: 'mentech'
+  ssh_pam_support: true
+  ssh_use_pam: true
+  ssh_allow_root_with_key: false
+
+  # Disable SFTP
+  sftp_enabled: false

@@ -8,10 +8,8 @@ const {VueLoaderPlugin} = require('vue-loader');
 const resolve = relativePath => path.resolve(__dirname, '.', relativePath);
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
-        // Since we need to load vue in the entry page.
-        vue: 'vue',
         // This is where the `main-content` component is
         index: resolve('src/main.js'),
     },
@@ -40,7 +38,7 @@ module.exports = {
                 },
             },
             {
-                test: /\.(ttf|eot|svg|png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -48,6 +46,35 @@ module.exports = {
                         outputPath: 'img'
                     },
                 }]
+            },
+            {
+              test: /\.(svg|jpe?g|png|ico)(\?v=\d+\.\d+\.\d+)?$/,
+              use: [
+                {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[ext]',
+                    outputPath: 'img'
+                  },
+                },
+                {
+                  loader: 'image-webpack-loader',
+                  options: {
+                    mozjpeg: {
+                      progressive: true,
+                      quality: 40
+                    },
+                    // optipng.enabled: false will disable optipng
+                    optipng: {
+                      enabled: false,
+                    },
+                    pngquant: {
+                      quality: '65-90',
+                      speed: 4
+                    },
+                  }
+                }
+              ]
             },
             {
                 test: /\.(woff(2)?|html)(\?v=\d+\.\d+\.\d+)?$/,
@@ -114,7 +141,6 @@ module.exports = {
         watchContentBase: true,
     },
     plugins: [
-        new VueLoaderPlugin(),
         new webpack.NamedModulesPlugin(),
         // Exchanges, adds, or removes modules while an application is running, without a full reload.
         new webpack.HotModuleReplacementPlugin(),
@@ -128,9 +154,6 @@ module.exports = {
             resolve('./src/'),
             resolve('./node_modules/'),
         ],
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-        },
         extensions: ['*', '.vue', '.js', '.json'],
     },
     // webpack outputs performance related stuff in the browser.
