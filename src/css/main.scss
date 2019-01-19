@@ -217,6 +217,20 @@ html, body {
   height: 100% !important;
 }
 
+.error-image {
+  background-image: linear-gradient(rgba(255, 240, 230, 0.55), rgba(255, 240, 230, 0.55)), url("../img/sibainu.jpg");
+  height: 95% !important;
+}
+
+.error-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 5%;
+  background-color: black;
+  color: var(--gray-1);
+}
+
 .hero-image {
   height: 40%;
   background-position: center;
@@ -296,4 +310,36 @@ hr{
   background-color: var(--color-primary);
   color: var(--gray-8);
   text-align: right;
+}
+
+.collapse-trans {
+  animation: slide 1s ease 0s forwards;
+  -moz-animation: slide 1s ease 0s forwards;
+  @keyframes slide {
+    from {height: 0;}
+    to {height: 100px;}
+  }
+  @-moz-keyframes slide {
+    from {height: 0;}
+    to {height: 100px;}
+  }
+}
+
+.collapse-hidden {
+  overflow: hidden;
+  height: 0;
+}
+
+.form-control {
+  &:focus {
+    outline: none !important;
+    border-color: var(--gray-8);
+    box-shadow: none;
+  }
+
+  &:active {
+    outline: none !important;
+    border-color: var(--gray-8);
+    box-shadow: none;
+  }
 }

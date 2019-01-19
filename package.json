@@ -3,7 +3,6 @@
   "author": "Polina Rymshina",
   "description": "A website for the wedding of Polina and Bart",
   "dependencies": {
-    "vue": "^2.5.17",
     "bootstrap": "^4.2.1",
     "@fortawesome/fontawesome-free": "^5.3.1"
   },

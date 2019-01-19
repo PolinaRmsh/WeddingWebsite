@@ -7,12 +7,16 @@ import org.glassfish.grizzly.http.util.Header;
 import org.glassfish.grizzly.http.util.HttpStatus;
 
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Static HTTP handler which simply sets the cache-control header for static resources.
  * The scope of the cache is set to private.
  */
 public class CachedHttpHandler extends StaticHttpHandler {
+
+    private static final Logger logger = Logger.getLogger(CachedHttpHandler.class.getName());
 
     private final int cacheMaxAge;
     private static final String CODE = "lWg1K1bM5n";
@@ -34,10 +38,10 @@ public class CachedHttpHandler extends StaticHttpHandler {
 
     @Override
     protected boolean handle(String uri, Request request, Response response) throws Exception {
-        response.setHeader(Header.CacheControl, "private max-age=" + cacheMaxAge);
+        logger.log(Level.INFO, uri);
         if (uri.contains("rsvp") && !request.getParameter("code").equals(CODE)) {
             response.setStatus(HttpStatus.FORBIDDEN_403);
-            return true;
+            return false;
         }
         return super.handle(uri, request, response);
     }

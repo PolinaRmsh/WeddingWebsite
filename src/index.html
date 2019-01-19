@@ -28,7 +28,6 @@
         </div>
     </div>
 </div>
-</div>
 <div class="couple-image hero-image">
     <div class="outer">
         <div class="middle">
@@ -61,7 +60,20 @@
                     </div>
                 </div>
                 <div class="horiz-center pb-2">
-                    <a href="rsvp.html" type="button" class="btn btn--primary pt-3 pb-3 pl-4 pr-4">Respond</a>
+                  <p>
+                    <button class="btn btn--primary pt-3 pb-3 pl-4 pr-4" type="button" onclick="document.getElementById('collapseRsvp').classList.toggle('collapse-trans')">
+                      Respond
+                    </button>
+                  </p>
+                  <div class="collapse-hidden collapse-hidden" id="collapseRsvp">
+                    <p>Please fill in your invitation code</p>
+                    <div class="input-group mb-3" style="width: 60%; margin: 0 auto;">
+                      <input type="text" class="form-control" placeholder="Invitation code" aria-label="Invitation code" aria-describedby="button-go" id="invitation-code">
+                      <div class="input-group-append">
+                        <button class="btn btn--secondary" type="button" id="button-go" onclick="redirectRsvp()">Go</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
             <div class="col-lg-1">
@@ -70,7 +82,12 @@
     </div>
 </div>
 <div class="p-2 footer">The website was made by Polina Rymshina</div>
-
+<script type="text/javascript">function redirectRsvp() {
+  console.log(document.getElementById('invitation-code').value);
+  window.location = "/rsvp.html?code=" + document.getElementById('invitation-code').value;
+  return false;
+}
+</script>
     <script src="index.js" async></script>
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Open+Sans" rel="stylesheet">
 </body>

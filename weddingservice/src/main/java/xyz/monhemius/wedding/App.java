@@ -7,6 +7,9 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 
 import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -45,15 +48,18 @@ public class App {
         HttpServer server = GrizzlyHttpServerFactory.createHttpServer(URI.create("http://localhost:8082"), false);
         server.getServerConfiguration().setDefaultErrorPageGenerator((
             (Request request, int status, String reasonPhrase, String description, Throwable exception) -> {
-                //Todo: create 404 page
+                Path errorFilePath = Paths.get("/var/www/xyz.monhemius.wedding/404.html");
+                if (Files.exists(errorFilePath)) {
+                    try {
+                        return new String(Files.readAllBytes(errorFilePath));
+                    } catch (IOException e) {
+                        logger.log(Level.WARNING, "Error finding error page", e);
+                    }
+                }
                 return "404: file not found";
             }));
 
-        server.getListener("grizzly").getFileCache().setEnabled(true);
-        CompressionConfig compressionConfig = server.getListener("grizzly").getCompressionConfig();
-        compressionConfig.setCompressionMode(CompressionConfig.CompressionMode.ON);
-        compressionConfig.setCompressionMinSize(1000);
-        compressionConfig.setCompressibleMimeTypes(compressionMimeTypes);
+        server.getListener("grizzly").getFileCache().setEnabled(false);
         server.getServerConfiguration().addHttpHandler(
             new CachedHttpHandler(86400, "/var/www/xyz.monhemius.wedding"));
 
