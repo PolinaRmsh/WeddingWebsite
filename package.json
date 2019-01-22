@@ -4,7 +4,7 @@
   "description": "A website for the wedding of Polina and Bart",
   "dependencies": {
     "bootstrap": "^4.2.1",
-    "@fortawesome/fontawesome-free": "^5.3.1"
+    "feather-icons": "^4.10.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

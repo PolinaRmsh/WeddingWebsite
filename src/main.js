@@ -5,4 +5,5 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'css/main.scss';
 import 'img/wasvenhoeve.jpg';
 import 'img/couple.jpg';
-import 'img/sibainu.jpg'
+import 'img/couple-2.jpg';
+import 'feather-icons/dist/icons/gift.svg'

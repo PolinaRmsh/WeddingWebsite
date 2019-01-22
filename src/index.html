@@ -20,9 +20,35 @@
         <div class="row">
             <div class="col-sm horiz-center">
                 <div class="h4 pb-4"><strong>Our Story</strong></div>
-                We met almost two years ago
             </div>
+        </div>
+        <div class="row flex-wrap-reverse">
             <div class="col-sm horiz-center">
+                We met almost two years ago in a small town Valkeakoski in southern Finland. One evening we both decided
+                to
+                go to a party were we both didn't really feel like going to. It also happened that most of our friends
+                cancelled
+                going.
+                Being friends of friends, we met at that party and decided to stick together. One month later after many
+                late
+                night conversations
+                we had our first date. Since that day we hadn't spent a day apart.
+                <p></p>
+                Since Bart had to go back to the Netherlands in May, Polina decided to do a minor there and go with him.
+                We
+                moved in
+                together to a student house in Eindhoven. In autumn 2017 we went to Paris on holidays. After a day
+                of exploring the city, Bart asked Polina if she wanted to go to Pont Alexandre III. That is the place
+                where Bart
+                went down
+                on his knee and asked if Polina wanted to be his wife. Polina gladly answered yes!
+                <p></p>
+                As a young couple, little did we know how much work it is to arrange a wedding. Somewhat more than a
+                year later
+                we managed to
+                prepare everything. Now we are ready to have a beautiful March wedding.
+            </div>
+            <div class="col-sm horiz-center our-story-row">
                 <img src="img/couple.jpg" alt="Bart and Polina" class="couple-photo">
             </div>
         </div>
@@ -38,21 +64,23 @@
 <div class="m-5 horiz-center">
     <div class="container">
         <div class="row">
-            <div class="col-lg-1">
+            <!--<div class="col-lg-1"></div>-->
+            <div class="col-sm horiz-center our-story-row">
+                <img src="img/couple-2.jpg" alt="Bart and Polina" class="couple-photo">
             </div>
-            <div class="col-lg-10 col-sm-12">
+            <div class="col-sm">
                 <div class="pb-4">
-                    <div class="pb-1">We have decided to go for a small wedding with the closest family members and
+                    <div>We have decided to go for a small wedding with the closest family members and
                         friends. The event will
                         be held in the beginning of March, 2019 in Wasvenboerderij, Eindhoven, The Netherlands.
-                    </div>
-                    <div class="pb-1">The Wasvenboerderij, an organic farm in the north-east of Eindhoven was chosen, as
+                    <p></p>
+                    The Wasvenboerderij, an organic farm in the north-east of Eindhoven was chosen, as
                         we had found
                         the area and the atmosphere there beautiful and, additionally, a natural and ecological aspect
                         of living
                         is important for us.
-                    </div>
-                    <div>We hope you understand our decision to have a small wedding and the fact that due to that we
+                    <p></p>
+                    We hope you understand our decision to have a small wedding and the fact that due to that we
                         cannot
                         invite all of our friends. We have sent several personal invitations and the response button
                         below is for
@@ -60,35 +88,43 @@
                     </div>
                 </div>
                 <div class="horiz-center pb-2">
-                  <p>
-                    <button class="btn btn--primary pt-3 pb-3 pl-4 pr-4" type="button" onclick="document.getElementById('collapseRsvp').classList.toggle('collapse-trans')">
-                      Respond
-                    </button>
-                  </p>
-                  <div class="collapse-hidden collapse-hidden" id="collapseRsvp">
-                    <p>Please fill in your invitation code</p>
-                    <div class="input-group mb-3" style="width: 60%; margin: 0 auto;">
-                      <input type="text" class="form-control" placeholder="Invitation code" aria-label="Invitation code" aria-describedby="button-go" id="invitation-code">
-                      <div class="input-group-append">
-                        <button class="btn btn--secondary" type="button" id="button-go" onclick="redirectRsvp()">Go</button>
-                      </div>
+                    <p>
+                        <button class="btn btn--primary pt-3 pb-3 pl-4 pr-4" type="button"
+                                onclick="
+                                let collapse = document.getElementById('collapseRsvp').classList.toggle('collapse-trans');
+                                if (collapse.classList.contains('collapse-trans')) {
+                                    setTimeout(function() {
+                                        collapse.classList.toggle('collapse-hidden');
+                                    }, 1000)
+                                }">
+                            Respond
+                        </button>
+                    </p>
+                    <div class="collapse-hidden" id="collapseRsvp">
+                        <p>Please fill in your invitation code</p>
+                        <div class="input-group invitation-code-container mb-3" style="margin: 0 auto;">
+                            <input style="margin-right: -3px" type="text" class="form-control"
+                                   placeholder="Invitation code"
+                                   aria-label="Invitation code" aria-describedby="button-go" id="invitation-code">
+                            <button type="button" class="btn btn--secondary" id="button-go" onclick="redirectRsvp()">
+                                Go
+                            </button>
+                        </div>
                     </div>
-                  </div>
                 </div>
             </div>
-            <div class="col-lg-1">
-            </div>
+            <!--<div class="col-lg-1"></div>-->
         </div>
     </div>
 </div>
 <div class="p-2 footer">The website was made by Polina Rymshina</div>
 <script type="text/javascript">function redirectRsvp() {
-  console.log(document.getElementById('invitation-code').value);
-  window.location = "/rsvp.html?code=" + document.getElementById('invitation-code').value;
-  return false;
+    console.log(document.getElementById('invitation-code').value);
+    window.location = "/rsvp.html?code=" + document.getElementById('invitation-code').value;
+    return false;
 }
 </script>
-    <script src="index.js" async></script>
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Open+Sans" rel="stylesheet">
+<script src="index.js" async></script>
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Open+Sans" rel="stylesheet">
 </body>
 </html>

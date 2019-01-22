@@ -82,7 +82,7 @@
 
   --btn-secondary-bg: var(--gray-5);
   --btn-secondary-active: var(--gray-7);
-  --btn-secondary-label: var(--gray-9);
+  --btn-secondary-label: var(--gray-2);
 
   --btn-disabled-bg: var(--gray-4);
   --btn-disabled-label: var(--gray-9);
@@ -165,7 +165,7 @@ html, body {
 
 .btn--secondary {
   background-color: var(--btn-secondary-bg);
-  color: var(--btn-secondary-label);
+  color: var(--btn-secondary-label) !important;
 
   &:visited {
     color: var(--btn-secondary-label);
@@ -208,6 +208,16 @@ html, body {
 .horiz-center {
   text-align: center;
 }
+
+.our-story-row {
+  @media screen and (max-width: 576px) {
+    margin-bottom: 1rem;
+  }
+  @media screen and (min-width: 576px) {
+    margin: auto;
+  }
+}
+
 .horiz-left{
   text-align: left;
 }
@@ -218,7 +228,12 @@ html, body {
 }
 
 .error-image {
-  background-image: linear-gradient(rgba(255, 240, 230, 0.55), rgba(255, 240, 230, 0.55)), url("../img/sibainu.jpg");
+  @media screen and (max-width: 576px) {
+    background-image: linear-gradient(rgba(255, 240, 230, 0.55), rgba(255, 240, 230, 0.55)), url("../img/sibainu-mobile.jpg");
+  }
+  @media screen and (min-width: 576px) {
+    background-image: linear-gradient(rgba(255, 240, 230, 0.55), rgba(255, 240, 230, 0.55)), url("../img/sibainu.jpg");
+  }
   height: 95% !important;
 }
 
@@ -255,9 +270,26 @@ html, body {
 .location-image {
   background-image: linear-gradient(rgba(255, 240, 230, 0.3), rgba(255, 240, 230, 0.3)), url("../img/image_part_002.jpg");
 }
+
+.flipped-image {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
 .invitation-image{
   background-image: linear-gradient(rgba(255, 240, 230, 0.3), rgba(255, 240, 230, 0.3)), url("../img/image_part_003.jpg");
 }
+
+.invitation-code-container {
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 576px) {
+    width: 60%;
+  }
+}
+
 .wasven-image{
   width: 100%;
   height: 16.5rem;
@@ -270,7 +302,7 @@ html, body {
   @media screen and (min-width: 576px) {
     width: 50%;
   }
-
+  border-radius: 2%;
 }
 .display-4 {
   font-family: var(--font-secondary);
@@ -333,13 +365,19 @@ hr{
 .form-control {
   &:focus {
     outline: none !important;
-    border-color: var(--gray-8);
+    border-color: var(--gray-6);
     box-shadow: none;
   }
 
   &:active {
     outline: none !important;
-    border-color: var(--gray-8);
+    border-color: var(--gray-6);
     box-shadow: none;
   }
+}
+
+
+.feather-gift {
+  width: 3.5em;
+  height: 3.5em;
 }

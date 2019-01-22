@@ -119,7 +119,6 @@ module.exports = {
      * There are multiple devtools available, check
      * https://github.com/webpack/webpack/tree/master/examples/source-map
      */
-    devtool: 'eval',
     devServer: {
         // The url you want the webpack-dev-server to use for serving files.
         host: '0.0.0.0',
@@ -134,7 +133,7 @@ module.exports = {
             poll: true,
         },
         // The path you want webpack-dev-server to use for serving files
-        publicPath: '/dist/',
+        publicPath: '/',
         // For static assets
         contentBase: resolve('dist'),
         // Reload for code changes to static assets.

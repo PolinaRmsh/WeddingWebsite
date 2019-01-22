@@ -56,7 +56,8 @@
                     <div>Bus 6 or 321 from Eindhoven Bus Station (Stop Van Oldenbarneveltlaan)</div>
                     <div>By car - Road N270</div>
                 </div>
-                <a href="https://goo.gl/maps/KzZDAYisccU2" role="button" class="btn btn--secondary mb-2 pt-3 pb-3 pl-4 pr-4">See map</a>
+                <a href="https://goo.gl/maps/KzZDAYisccU2" role="button"
+                   class="btn btn--secondary mb-2 pt-3 pb-3 pl-4 pr-4">See map</a>
             </div>
             <div class="col-sm">
                 <img src="img/wasvenhoeve.jpg" alt="Wasvenhoeve buildings" class="wasven-image">
@@ -64,8 +65,8 @@
         </div>
     </div>
 </div>
-<div class="invitation-image hero-image">
-    <div class="outer">
+<div class="location-image hero-image flipped-image">
+    <div class="outer flipped-image">
         <div class="middle">
             <div class="h2 horiz-center section-text display-4 inner">Invitation</div>
         </div>
@@ -74,54 +75,85 @@
 <div class="m-5 horiz-center">
     <div class="container">
         <div class="row">
-            <div class="col-lg-1">
-            </div>
+            <div class="col-lg-1"></div>
             <div class="col-lg-10 col-sm-12">
                 <div class="h4 pb-4"><strong>We're so excited to celebrate with you!</strong></div>
-              <form action="https://formcarry.com/s/12-cu9r101G" method="POST" accept-charset="UTF-8" class="pb-4">
+                <form action="https://formcarry.com/s/12-cu9r101G" method="POST" accept-charset="UTF-8" class="pb-4">
                     <div class="form-row pb-2">
                         <div class="form-group col-md-6 horiz-left">
                             <label for="personalEmail">Email address *</label>
-                            <input type="email" class="form-control" id="personalEmail"  name="email" placeholder="Your email"
+                            <input type="email" class="form-control" id="personalEmail" name="email"
+                                   placeholder="Your email"
                                    required>
                         </div>
                         <div class="form-group col-md-6 horiz-left">
                             <label for="nameAndSurname">Name *</label>
-                            <input type="text" class="form-control" id="nameAndSurname" name="nameAndSurname" placeholder="Your name"
+                            <input type="text" class="form-control" id="nameAndSurname" name="nameAndSurname"
+                                   placeholder="Your name"
                                    required>
                         </div>
                     </div>
                     <div class="form-row pb-2">
+                        <datalist id="yesno">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </datalist>
                         <div class="form-group col-md-6 horiz-left">
                             <label for="attendance">Are you coming? *</label>
-                            <input type="text" class="form-control" id="attendance" name="attendance" placeholder="Yes/No" required>
+                            <input type="text" class="form-control" id="attendance" name="attendance" list="yesno"
+                                   placeholder="Yes/No" required>
                         </div>
                         <div class="form-group col-md-6 horiz-left">
                             <label for="partner">Are you bringing anybody? *</label>
-                            <input type="text" class="form-control" id="partner" name="partner" placeholder="Yes/No" required>
+                            <input type="text" class="form-control" id="partner" name="partner" list="yesno"
+                                   placeholder="Yes/No" required>
                         </div>
                     </div>
                     <div class="form-row pb-2">
                         <div class="form-group col-md-6 horiz-left">
-                            <label for="lunch">Are you planning to stay for lunch? *</label>
-                            <input type="text" class="form-control" id="lunch" name="lunch" placeholder="Yes/No" required>
+                            <label for="lunch">Are you planning to stay for lunch? * (€15.50 p.p.)</label>
+                            <input type="text" class="form-control" id="lunch" name="lunch" list="yesno"
+                                   placeholder="Yes/No" required>
                         </div>
                     </div>
                     <div class="form-row pb-2">
                         <div class="form-group col-md-12 horiz-left">
                             <label for="message">Do you have any special wishes or a message?</label>
-                            <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message"></textarea>
+                            <textarea type="text" class="form-control" id="message" name="message"
+                                      placeholder="Your message"></textarea>
                         </div>
                     </div>
                     <input type="hidden" name="_gotcha">
                     <button type="submit" class="btn btn--primary pt-3 pb-3 pl-4 pr-4">Submit</button>
                 </form>
             </div>
-            <div class="col-lg-1">
-            </div>
+            <div class="col-lg-1"></div>
         </div>
     </div>
 </div>
+<div class="invitation-image hero-image">
+    <div class="outer">
+        <div class="middle">
+            <div class="h2 horiz-center section-text display-4 inner">Gift Ideas</div>
+        </div>
+    </div>
+</div>
+<div class="m-5 horiz-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 col-sm-12">
+                <div class="h4 pb-4"><strong>Thank you for coming</strong></div>
+                <div>We don't expect you to give us any presents. It is expensive enough to take a day of work
+                    and travel to be with us to our wedding, it means a lot to us that you do. If you still want to give us
+                    present, we prefer a donation to our honeymoon fund.
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+</div>
+<div class="p-2 footer">The website was made by Polina Rymshina</div>
 <script src="index.js" async></script>
 </body>
 </html>
