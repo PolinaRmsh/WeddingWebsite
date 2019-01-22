@@ -375,9 +375,51 @@ hr{
     box-shadow: none;
   }
 }
+//.feather-gift {
+//  width: 3.5em;
+//  height: 3.5em;
+//}
+#demo {
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: width 0.5s ease;
+  -o-transition: width 0.5s ease;
+  transition: width 0.5s ease;
 
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 30px;
+  height: 30px;
+  width: 0;
+}
+#demo.in {
+  width: 90px;
+}
+.heart-footer{
+  //height: 100%;
+  //width: 100%;
+}
+.button-footer{
+  background-color: transparent;
+  border: none;
+}
+#made-btn{
+  -webkit-transition: visibility 1s ease 1s;
+  -moz-transition: visibility 1s ease 1s;
+  -o-transition: visibility 1s ease 1s;
+  transition: visibility 1s ease 1s;
 
-.feather-gift {
-  width: 3.5em;
-  height: 3.5em;
+  width: 100px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#made-btn.visibility{
+  visibility: hidden;
+}
+svg path{
+  stroke: var(--gray-8);
+}
+svg:hover path{
+  fill:#ff3d00;
 }

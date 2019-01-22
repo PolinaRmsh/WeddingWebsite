@@ -6,4 +6,4 @@ import 'css/main.scss';
 import 'img/wasvenhoeve.jpg';
 import 'img/couple.jpg';
 import 'img/couple-2.jpg';
-import 'feather-icons/dist/icons/gift.svg'
+import 'img/heart.svg'
